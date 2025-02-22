@@ -1,0 +1,150 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    justify-content: center;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.logo img {
+    width: 351px;
+    height: auto;
+}
+
+.search-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.171);
+    margin: 20px auto 0px;
+}
+
+.input-group {
+    padding: 0 400px;
+    display: flex;
+
+}
+
+input[type="text"] {
+    width: 400px;
+    padding: 5px;
+}
+
+.buttons input {
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+.footer {
+    height: 100%;
+    align-items: center;
+    margin-top: 5px;
+    background-color: #aadddd;
+    padding: 0px;
+    display: flex;
+    font-size: 14px;
+}
+
+.footer div {
+
+    padding: 1px;
+    text-align: center;
+}
+
+.footer-linksl {
+    background-color: #7EE5DA;
+    height: 120px;
+    text-align: center;
+    border-left: white 3px solid;
+    width: 100%;
+}
+
+.footer-linksc {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #70CCC2;
+    height: 120px;
+    border-left: white 3px solid;
+    width: 100%;
+}
+
+.footer-linksr {
+    background-color: #62B3AA;
+    height: 100%;
+    text-align: center;
+    border-left: white 3px solid;
+    width: 100%;
+}
+
+.footer a {
+    text-decoration: underline;
+    color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.footer input[type="text"] {
+    width: 150px;
+}
+
+/* .footer-linksc a {
+    display: block;
+} */
+.footer button {
+    margin-right: 5PX;
+    border-radius: 5px;
+    padding: 3px 6px;
+}
+
+p {
+    font-size: 14px;
+}
+
+.inline {
+    justify-content: center;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#tow {
+    display: flex;
+    justify-content: center;
+    padding: 0px 50px;
+}
+
+.input-field {
+    margin-left: 140px;
+    display: flex;
+    align-items: center;
+    border: #62B3AA 4px solid;
+    height: 300px;
+    width: 80%;
+    
+}
+.input-field-1{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    border-right: #62B3AA 4px solid;
+    height: 300px;
+    width: 40%;
+    padding-top: 30px;
+}
+.table{
+    padding-bottom: 100px;
+    padding-left: 10px;
+}

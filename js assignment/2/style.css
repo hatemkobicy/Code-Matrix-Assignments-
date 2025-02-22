@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.bg-dark {
+    background-color: #333;
+    color: white;
+}
+
+#my-form {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 300px;
+}
+
+.btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: darkblue;
+}
+
+.items li {
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    list-style: none;
+}
