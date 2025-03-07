@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <div class="timer-container">
+        <div id="timeDisplay">
+            <h3 id="mm">25</h3>:
+            <h3 id="ss">00</h3>:
+            <h3 id="ms">00</h3>
+        </div>
+
+        <div class="controls">
+            <input type="number" id="minuteInput" value="25" min="0" max="120" placeholder="Minutes">
+            <input type="number" id="secondInput" value="0" min="0" max="59" placeholder="Seconds">
+            <input type="number" id="millisecondInput" value="0" min="0" max="99" placeholder="Milliseconds">
+            <button id="startButton">Start</button>
+            <button id="resetButton">Reset</button>
+        </div>
+
+
+    </div>
+
+    <script src="extra.js"></script>
+</body>
+
+</html>
