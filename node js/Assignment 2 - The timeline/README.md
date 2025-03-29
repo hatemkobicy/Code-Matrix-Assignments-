@@ -1,43 +1,4 @@
 # The Timeline
 
-A simple timeline application built with Node.js and Express that displays posts with user names, dates, and messages.
-
-## Features
-
-- Display a list of posts on the screen
-- Each post shows the Name of the User, Post's Date, and Post's Message
-- Simple and clean UI
-
-## Installation
-
-1. Clone the repository
-```
-git clone https://github.com/yourusername/TheTimeline.git
-```
-
-2. Install dependencies
-```
-cd TheTimeline
-npm install
-```
-
-3. Start the application
-```
-npm start
-```
-
-4. Open your browser and navigate to `http://localhost:3000`
-
-## Technologies Used
-
-- Node.js
-- Express
-- EJS templating
-- CSS
-
-## Project Structure
-
-- `app.js` - Main application file
-- `models/posts.js` - Data model for timeline posts
-- `views/index.ejs` - EJS template for the timeline view
-- `public/css/style.css` - CSS styling for the application
+![Screenshot 2025-03-29 150712](https://github.com/user-attachments/assets/4db6d3fc-d8a3-4923-ab7f-3be98d5b2c99)
+![Screenshot 2025-03-29 150748](https://github.com/user-attachments/assets/a8a1dade-d85f-40ae-9d45-55fe738f72c6)
