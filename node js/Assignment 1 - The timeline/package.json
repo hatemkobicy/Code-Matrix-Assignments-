@@ -1,7 +1,7 @@
 {
   "name": "thetimeline",
   "version": "1.0.0",
-  "description": "A simple timeline application built with Node.js and Express",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
