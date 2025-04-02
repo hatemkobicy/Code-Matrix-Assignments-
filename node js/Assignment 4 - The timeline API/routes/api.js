@@ -2,11 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { body } = require('express-validator');
 
-// Import controllers
 const postController = require('../controllers/postController');
 const commentController = require('../controllers/commentController');
 
-// Post API routes
 router.get('/api/get-posts', postController.getAllPosts);
 
 router.post('/api/create-post', [
@@ -21,7 +19,6 @@ router.put('/api/edit-post/:id', [
 
 router.delete('/api/delete-post/:id', postController.deletePost);
 
-// Comment API routes
 router.get('/api/get-post-comments/:id-post', commentController.getAllCommentsPost);
 
 router.post('/api/post-post-comment/:id-post', [
