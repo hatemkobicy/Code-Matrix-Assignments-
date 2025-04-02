@@ -22,5 +22,4 @@ const commentSchema = new mongoose.Schema({
     }
 });
 
-// Create and export the Comment model
 module.exports = mongoose.model('Comment', commentSchema);
