@@ -12,11 +12,9 @@
             <h1>Timeline</h1>
         </header>
         
-        <!-- Post submission form -->
         <section class="post-form">
             <h2>Post a message</h2>
             
-            <!-- Display validation errors if any -->
             <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
                 <div class="error-messages">
                     <% errors.forEach(error => { %>
@@ -39,7 +37,6 @@
             </form>
         </section>
         
-        <!-- Timeline of posts -->
         <main class="timeline">
             <% if (posts && posts.length > 0) { %>
                 <% posts.forEach(post => { %>
@@ -52,7 +49,6 @@
                             <%= post.message %>
                         </div>
                         
-                        <!-- Comments section -->
                         <div class="comments-section">
                             <% if (post.comments && post.comments.length > 0) { %>
                                 <div class="comments-list">
@@ -70,11 +66,9 @@
                                 </div>
                             <% } %>
                             
-                            <!-- Comment form -->
                             <div class="comment-form">
                                 <h3>Post a comment</h3>
                                 
-                                <!-- Display comment validation errors if any -->
                                 <% if (typeof commentErrors !== 'undefined' && commentErrors.length > 0 && 
                                       typeof commentFormData !== 'undefined' && commentFormData.postId === post._id.toString()) { %>
                                     <div class="error-messages">
