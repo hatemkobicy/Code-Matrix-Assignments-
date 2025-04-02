@@ -20,13 +20,11 @@ const postSchema = new mongoose.Schema({
     toObject: { virtuals: true }
 });
 
-// Virtual for comments - this creates a virtual relationship without storing in the database
 postSchema.virtual('comments', {
     ref: 'Comment',
     localField: '_id',
     foreignField: 'postId',
-    options: { sort: { createdAt: 1 } } // Sort comments by createdAt in ascending order (oldest first)
+    options: { sort: { createdAt: 1 } } 
 });
 
-// Create and export the Post model
 module.exports = mongoose.model('Post', postSchema);
