@@ -1,7 +1,6 @@
 const Post = require('../models/Post');
 const { validationResult } = require('express-validator');
 
-// Get all posts
 exports.getAllPosts = async (req, res) => {
     try {
         const posts = await Post.find().sort({ createdAt: -1 });
@@ -19,9 +18,7 @@ exports.getAllPosts = async (req, res) => {
     }
 };
 
-// Create a new post
 exports.postOnePost = async (req, res) => {
-    // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -33,13 +30,11 @@ exports.postOnePost = async (req, res) => {
     try {
         const { name, message } = req.body;
         
-        // Create new post
         const post = new Post({
             name,
             message
         });
 
-        // Save post to database
         const savedPost = await post.save();
         
         res.status(201).json({
@@ -55,9 +50,7 @@ exports.postOnePost = async (req, res) => {
     }
 };
 
-// Update a post
 exports.updateOnePost = async (req, res) => {
-    // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({
@@ -69,14 +62,12 @@ exports.updateOnePost = async (req, res) => {
     try {
         const { name, message } = req.body;
         
-        // Find post by ID and update
         const post = await Post.findByIdAndUpdate(
             req.params.id, 
             { name, message },
             { new: true, runValidators: true }
         );
 
-        // Check if post exists
         if (!post) {
             return res.status(404).json({
                 success: false,
@@ -89,7 +80,6 @@ exports.updateOnePost = async (req, res) => {
             data: post
         });
     } catch (err) {
-        // Check if error is due to invalid ID format
         if (err.kind === 'ObjectId') {
             return res.status(400).json({
                 success: false,
@@ -105,13 +95,10 @@ exports.updateOnePost = async (req, res) => {
     }
 };
 
-// Delete a post
 exports.deletePost = async (req, res) => {
     try {
-        // Find post by ID and delete
         const post = await Post.findByIdAndDelete(req.params.id);
 
-        // Check if post exists
         if (!post) {
             return res.status(404).json({
                 success: false,
@@ -124,7 +111,6 @@ exports.deletePost = async (req, res) => {
             data: {}
         });
     } catch (err) {
-        // Check if error is due to invalid ID format
         if (err.kind === 'ObjectId') {
             return res.status(400).json({
                 success: false,
