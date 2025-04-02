@@ -14,21 +14,16 @@ mongoose.connect(
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
-// Set EJS as the view engine
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: true })); // For parsing form data
+app.use(express.urlencoded({ extended: true }));
 
-// Import data model
 const Post = require('./models/Post');
 
-// Routes
 app.get('/', async (req, res) => {
     try {
-        // Get posts from database, sorted by date (newest first)
         const posts = await Post.find().sort({ createdAt: -1 });
         res.render('index', { title: 'Timeline', posts: posts });
     } catch (err) {
@@ -37,16 +32,12 @@ app.get('/', async (req, res) => {
     }
 });
 
-// Route for submitting new posts
 app.post('/posts', [
-    // Validation middleware
     body('name').notEmpty().withMessage('Name is required'),
     body('message').isLength({ min: 25 }).withMessage('Message must be at least 25 characters long')
 ], async (req, res) => {
-    // Check for validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        // If there are errors, get posts and re-render the page with error messages
         const posts = await Post.find().sort({ createdAt: -1 });
         return res.render('index', { 
             title: 'Timeline', 
@@ -57,16 +48,13 @@ app.post('/posts', [
     }
 
     try {
-        // Create new post
         const newPost = new Post({
             name: req.body.name,
             message: req.body.message
         });
 
-        // Save post to database
         await newPost.save();
         
-        // Redirect to homepage to see the new post
         res.redirect('/');
     } catch (err) {
         console.error(err);
@@ -74,7 +62,6 @@ app.post('/posts', [
     }
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Timeline app listening at http://localhost:${port}`);
 });
