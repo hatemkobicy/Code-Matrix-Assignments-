@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Timeline</h1>
+        </header>
+        
+        <!-- Post submission form -->
+        <section class="post-form">
+            <h2>Post a message</h2>
+            
+            <!-- Display validation errors if any -->
+            <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                <div class="error-messages">
+                    <% errors.forEach(error => { %>
+                        <p class="error"><%= error.msg %></p>
+                    <% }); %>
+                </div>
+            <% } %>
+            
+            <form action="/posts" method="POST">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" value="<%= typeof formData !== 'undefined' ? formData.name : '' %>" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message:</label>
+                    <textarea id="message" name="message" rows="4" minlength="25" required><%= typeof formData !== 'undefined' ? formData.message : '' %></textarea>
+                    <small>Message must be at least 25 characters long</small>
+                </div>
+                <button type="submit" class="submit-btn">Post a message</button>
+            </form>
+        </section>
+        
+        <!-- Timeline of posts -->
+        <main class="timeline">
+            <% if (posts && posts.length > 0) { %>
+                <% posts.forEach(post => { %>
+                    <div class="post">
+                        <div class="post-header">
+                            <span class="post-author"><%= post.name %></span> - 
+                            <span class="post-date"><%= new Date(post.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></span>
+                        </div>
+                        <div class="post-content">
+                            <%= post.message %>
+                        </div>
+                        
+                        <!-- Comments section -->
+                        <div class="comments-section">
+                            <% if (post.comments && post.comments.length > 0) { %>
+                                <div class="comments-list">
+                                    <% post.comments.forEach(comment => { %>
+                                        <div class="comment">
+                                            <div class="comment-header">
+                                                <span class="comment-author"><%= comment.name %></span> - 
+                                                <span class="comment-date"><%= new Date(comment.createdAt).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></span>
+                                            </div>
+                                            <div class="comment-content">
+                                                <%= comment.comment %>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+                            
+                            <!-- Comment form -->
+                            <div class="comment-form">
+                                <h3>Post a comment</h3>
+                                
+                                <!-- Display comment validation errors if any -->
+                                <% if (typeof commentErrors !== 'undefined' && commentErrors.length > 0 && 
+                                      typeof commentFormData !== 'undefined' && commentFormData.postId === post._id.toString()) { %>
+                                    <div class="error-messages">
+                                        <% commentErrors.forEach(error => { %>
+                                            <p class="error"><%= error.msg %></p>
+                                        <% }); %>
+                                    </div>
+                                <% } %>
+                                
+                                <form action="/comments/<%= post._id %>" method="POST">
+                                    <div class="form-group">
+                                        <label for="comment-name-<%= post._id %>">Your Name:</label>
+                                        <input type="text" id="comment-name-<%= post._id %>" name="name" 
+                                               value="<%= (typeof commentFormData !== 'undefined' && commentFormData.postId === post._id.toString()) ? commentFormData.name : '' %>" 
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="comment-text-<%= post._id %>">Your Comment:</label>
+                                        <textarea id="comment-text-<%= post._id %>" name="comment" rows="3" minlength="25" required><%= (typeof commentFormData !== 'undefined' && commentFormData.postId === post._id.toString()) ? commentFormData.comment : '' %></textarea>
+                                        <small>Comment must be at least 25 characters long</small>
+                                    </div>
+                                    <button type="submit" class="comment-btn">Post a comment</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="no-posts">No posts yet. Be the first to post!</p>
+            <% } %>
+        </main>
+        
+        <div class="note">
+            <p>For the comments, show the oldest comment of the message first</p>
+        </div>
+    </div>
+</body>
+</html>
